@@ -1,0 +1,49 @@
+﻿<main>
+    <section class="row" aria-labelledby="pizzeriaTitle">
+        <h1 id="pizzeriaTitle">Pizzeria La Terrazza</h1>
+        <p class="lead"><strong>Benvenuti alla Pizzeria La Terrazza, il luogo perfetto per gustare autentiche pizze italiane in un'atmosfera accogliente e familiare.</strong></p>
+        <p>@Html.ActionLink("Guarda il menù »", "Index", "Pizza", null, new { @class = "btn btn-primary btn-md" })</p>
+    </section>
+
+    <div class="row">
+        <section class="col-md-6" aria-labelledby="overviewTitle">
+            <h2 id="overviewTitle">Panoramica</h2>
+            <p>
+                La Pizzeria La Terrazza si trova nel cuore del centro storico, proprio di fronte a una pittoresca piazza con una fontana e giardini ben curati.
+                Con la sua atmosfera rilassata e i camerieri gentili, è il posto ideale per trascorrere una serata in compagnia degli amici o della famiglia.
+            </p>
+            <p>
+                Il nostro locale offre una vasta selezione di pizze preparate con ingredienti freschi e di alta qualità, cotte in forno a legna per garantire il massimo sapore e la crosta perfetta.
+                Ogni pizza è un'esplosione di sapori autentici che ti faranno venire l'acquolina in bocca.
+            </p>
+            <p>
+                Scegli di sederti sulla nostra terrazza esterna e goditi la vista sulla piazza mentre assapori una deliziosa pizza appena sfornata.
+                Registrati sul nostro sito per ordinare le nostre specialità direttamente da casa tua.
+            </p>
+        </section>
+        <section class="col-md-6" aria-labelledby="servicesTitle">
+            <h2 id="servicesTitle">I nostri servizi</h2>
+            <p>
+                Presso la Pizzeria La Terrazza ci impegniamo a garantire un'esperienza gastronomica indimenticabile ai nostri clienti.
+                Oltre alla vasta selezione di pizze, offriamo una varietà di antipasti, insalate fresche e dolci deliziosi per soddisfare ogni palato.
+            </p>
+            <p>
+                I nostri camerieri sono sempre disponibili per offrire consigli sulle nostre specialità e per assicurarsi che il tuo pasto sia impeccabile.
+                Inoltre, offriamo anche servizio di consegna a domicilio per chi desidera gustare le nostre pizze comodamente a casa propria.
+            </p>
+        </section>
+    </div>
+
+    <div class="row">
+        <section class="col-md-12" aria-labelledby="registrationTitle">
+            <h2 id="registrationTitle">Registrati subito</h2>
+            <p>
+                Registrati sul nostro sito per accedere al menu completo e per ordinare le nostre deliziose pizze direttamente a casa tua.
+                Non perdere l'occasione di gustare le migliori pizze della città comodamente sul divano di casa tua.
+            </p>
+            <p>
+                @Html.ActionLink("Registrati ora »", "Create", "Users", null, new { @class = "btn btn-primary btn-md" })
+            </p>
+        </section>
+    </div>
+</main>

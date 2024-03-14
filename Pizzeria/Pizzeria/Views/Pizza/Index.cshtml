@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Pizzeria.Models.Pizza>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@if (User.IsInRole("Admin"))
+{ 
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+
+        <div class="col">
+            <div class="card shadow text-black" style="width: 18rem;">
+                <img src="@Html.DisplayFor(modelItem => item.Foto)" class="card-img-top" style="width: 18rem;" alt="@item.Nome Image">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nome)</h5>
+                    <p class="card-text">
+                        <span class="Prezzo">€ @Html.DisplayFor(modelItem => item.Prezzo)</span>
+                        <br />
+                        <span class="Tempo_Consegna">Consegna: @Html.DisplayFor(modelItem => item.TempoConsegna) Minuti</span>
+                        <br />
+                        <span>@Html.DisplayFor(modelItem => item.Descrizione)</span>
+                        <br />
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <span>Scegli la quantità<input type="number" name="quantity" id="quantity" min="1" step="1" value="1" style="width: 50px; margin-left: 5px;"></span>
+                        }
+                    <div class="d-flex justify-content-center">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <button type="button" class="btn btn-danger">Aggiungi al carrello</button>
+                        }
+                    </div>
+                    </p>
+                </div>
+                <div class="card-footer">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="form-button-sm d-flex justify-content-around">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IdPizza }, new { @class = "btn btn-outline-dark" })
+                            @Html.ActionLink("Delete", "Delete", "Pizza", new { id = item.IdPizza }, new { @class = "btn btn-outline-danger" })
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
