@@ -35,7 +35,10 @@
                     <div class="d-flex justify-content-center">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <button type="button" class="btn btn-danger">Aggiungi al carrello</button>
+                            @Html.ActionLink("Aggiungi al carrello", "AddToCart", "Pizza", new { id = item.IdPizza }, new { @class = "btn btn-danger" })
+
+
+
                         }
                     </div>
                     </p>

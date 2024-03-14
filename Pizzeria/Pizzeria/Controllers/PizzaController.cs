@@ -142,7 +142,64 @@ namespace Pizzeria.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Carrello()
+        {
+            var carrello = Session["Carrello"] as List<Pizza> ?? new List<Pizza>();
+            return View(carrello);
+        }
 
+        public ActionResult AddToCart(int id)
+        {
+            using (var dbContext = new ModelDbContext())
+            {
+                var pizza = dbContext.Pizza.Find(id);
+                if (pizza != null)
+                {
+                    var carrello = Session["Carrello"] as List<Pizza> ?? new List<Pizza>();
+                    carrello.Add(pizza);
+                    Session["Carrello"] = carrello;
+
+                    TempData["Message"] = "Prodotto aggiunto al carrello con successo.";
+                }
+                else
+                {
+                    TempData["Message"] = "Errore: Prodotto non trovato.";
+                }
+
+                return RedirectToAction("Index", "Pizza");
+            }
+        }
+
+        public ActionResult RemoveFromCart(int id)
+        {
+            using (var dbContext = new ModelDbContext())
+            {
+                var carrello = Session["Carrello"] as List<Pizza>;
+                if (carrello != null)
+                {
+                    // Cerca la pizza nel carrello
+                    var pizzaToRemove = carrello.FirstOrDefault(p => p.IdPizza == id);
+                    if (pizzaToRemove != null)
+                    {
+                        // Rimuovi la pizza dal carrello
+                        carrello.Remove(pizzaToRemove);
+                        Session["Carrello"] = carrello;
+
+                        TempData["Message"] = "Prodotto rimosso dal carrello con successo.";
+                    }
+                    else
+                    {
+                        TempData["Message"] = "Errore: Prodotto non trovato nel carrello.";
+                    }
+                }
+                else
+                {
+                    TempData["Message"] = "Errore: Carrello non trovato.";
+                }
+
+                return RedirectToAction("Index", "Pizza");
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

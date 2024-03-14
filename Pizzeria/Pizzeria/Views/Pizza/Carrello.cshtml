@@ -1,0 +1,56 @@
+﻿﻿@model IEnumerable<Pizzeria.Models.Pizza>
+
+@{
+    ViewBag.Title = "Carrello";
+}
+
+<h2>Carrello</h2>
+
+<table class="table" style="margin-bottom:200px">
+    <tr>
+        <th>Immagine</th>
+        <th>Nome</th>
+        <th>Prezzo</th>
+        <th>Tempo di Consegna</th>
+        <th>Ingredienti</th>
+        <th>Opzioni</th>
+    </tr>
+
+    @{
+        decimal Tot = 0;
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td><img src="@item.Foto" alt="Immagine Pizza" style="width: 100px; height: 100px;" /></td>
+            <td>@item.Nome</td>
+            <td>@item.Prezzo €</td>
+            <td>@item.TempoConsegna min</td>
+            <td>@item.Descrizione</td>
+            <td>
+                <button class="button2">  @Html.ActionLink("Rimuovi", "RemoveFromCart", "Pizza", new { id = item.IdPizza }, null)</button>
+            </td>
+        </tr>
+
+        { Tot += item.Prezzo; }
+
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td><strong>Tot: @Tot €</strong></td>
+            <td></td>
+            <td></td>
+            <td> <button class="button2">  @Html.ActionLink("Ordina", "", "Pizza", new { id = item.IdPizza }, null)</button></td>
+        </tr>
+    }
+
+</table>
+
+@if (!Model.Any())
+{
+    <div class="alert mb-5 shadow" role="alert" style="background-color:moccasin">
+        Il carrello è vuoto al momento. Inizia ad aggiungere deliziose pizze per riempirlo!
+    </div>
+}

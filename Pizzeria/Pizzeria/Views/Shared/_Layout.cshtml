@@ -21,14 +21,14 @@
                 <ul class="navbar-nav flex-grow-1">
                     @if (!User.Identity.IsAuthenticated)
                     {
+                        <li>@Html.ActionLink("Registrati", "Create", "Users", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Login", "Login", "Users", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Menù", "Index", "Pizza", new { area = "" }, new { @class = "nav-link" })</li>
+
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Registrati", "Create", "Users", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Menù", "Index", "Pizza", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Carrello", "Carrello", "Pizza", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Users", null, new { @class = "nav-link" })</li>
                     }
                 </ul>

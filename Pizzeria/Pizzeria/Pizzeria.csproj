@@ -266,6 +266,7 @@
     <Content Include="Views\Ordine\Edit.cshtml" />
     <Content Include="Views\Ordine\Index.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Pizza\Carrello.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
